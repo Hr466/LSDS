@@ -1,0 +1,54 @@
+this is my python code
+import re
+
+def is_palindrome_basic(s):
+    s = s.lower()
+    s = re.sub(r'[^a-z0-9]', '', s)  # Remove non-alphanumeric characters
+    return s == s[::-1]
+
+def is_palindrome_recursive(s):
+    s = s.lower()
+    s = re.sub(r'[^a-z0-9]', '', s)
+
+    def recursive_check(left, right):
+        if left >= right:
+            return True
+        if s[left] != s[right]:
+            return False
+        return recursive_check(left + 1, right - 1)
+
+    return recursive_check(0, len(s) - 1)
+
+def is_palindrome_iterative(s):
+    s = s.lower()
+    s = re.sub(r'[^a-z0-9]', '', s)
+
+    left, right = 0, len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+# Test the functions
+input_string = input("Enter a string: ")
+
+print("\nUsing basic method:")
+if is_palindrome_basic(input_string):
+    print("It's a palindrome!")
+else:
+    print("It's not a palindrome.")
+
+print("\nUsing recursive method:")
+if is_palindrome_recursive(input_string):
+    print("It's a palindrome!")
+else:
+    print("It's not a palindrome.")
+
+print("\nUsing iterative method:")
+if is_palindrome_iterative(input_string):
+    print("It's a palindrome!")
+else:
+    print("It's not a palindrome.")
+
