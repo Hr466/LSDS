@@ -1,0 +1,12 @@
+def is_palindrome(s):
+    s = s.lower()  # Convert the string to lowercase
+    s = s.replace(" ", "")  # Remove spaces
+    return s == s[::-1]
+
+# Test the function
+input_string = input("Enter a string: ")
+if is_palindrome(input_string):
+    print("It's a palindrome!")
+else:
+    print("It's not a palindrome.")
+
